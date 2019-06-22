@@ -27,6 +27,7 @@ jobs:
           name: make migrations
           command: |
             . venv/bin/activate
+            cd django_playground
 
             python manage.py makemigrations --settings django_playground.settings.ci
             python manage.py migrate --no-input --settings django_playground.settings.ci
@@ -36,5 +37,6 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
+            cd django_playground
 
             python manage.py test --settings django_playground.settings.ci
