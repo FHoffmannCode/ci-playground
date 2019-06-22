@@ -2,7 +2,9 @@
 
 pip install -r /utils/requirements.txt
 
-python /app/manage.py makemigrations
-python /app/manage.py migrate --no-input
+cd app
 
-python /app/manage.py runserver 0.0.0.0:8000
+python manage.py makemigrations --settings django_playground.settings.docker
+python manage.py migrate --no-input --settings django_playground.settings.docker
+
+python manage.py runserver 0.0.0.0:8000 --settings django_playground.settings.docker
