@@ -21,7 +21,8 @@ jobs:
           command: |
             python -m venv venv
             . venv/bin/activate
-            pip install -r django_playground/requirements.txt
+            cd django_playground
+            pip install -r requirements.txt
       - run:
           name: make migrations
           command: |
