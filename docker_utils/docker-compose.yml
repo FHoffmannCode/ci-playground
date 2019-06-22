@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  vote:
+    build: ./vote
+    volumes:
+      - ../django_playground:/app
+      - ./vote:/utils
+    ports:
+      - "8000:8000"
+    command: ./utils/commands/run_app.sh
+    networks:
+      - app
+    depends_on:
+      - db
+
+  db:
+    image: postgres:9.5.17-alpine
+    container_name: postgres_db
+    networks:
+      - app
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+
+networks:
+  app:
+
+volumes:
+  db-data:
